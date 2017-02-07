@@ -1,0 +1,19 @@
+<section class="panel">
+        <header class="panel-heading">
+                Attendance Sheets By Date
+        </header>
+        <div class="panel-body table-responsive">
+            <%= form_for(:attendance,:url=>{:action=>'search_attendance_sheets_by_date'}) do |f| %>
+               
+
+                <div class="form-group">
+                    <label>Select Date</label> 
+                    <%= f.collection_select :day, @dates, :to_s, :to_s, include_blank: false %>
+                    
+                </div>
+
+                
+                <%= f.submit "Save", class: 'button' %>
+            <% end %>
+        </div>
+</section>

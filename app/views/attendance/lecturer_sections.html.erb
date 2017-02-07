@@ -1,0 +1,34 @@
+ 
+
+    <section class="panel">
+        <header class="panel-heading">
+            My Sections 
+        </header>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Section Name</th>
+                        <th>Students</th>
+                        <th>Take Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% @sections.each do |section| %>
+                
+                    <tr>
+                        <td><%= section.name %></td>
+                        <td> 
+                            <a href="/lecturer/section_students/<%= section.id %> ">  Show Students </a> 
+                        </td>
+                        <td><%= link_to "Mark Attendance", :controller=>'attendance',:action=>'section_attendances' , id: section.id %></td>
+
+                    </tr>
+
+                <% end %>
+
+                </tbody>
+            </table>
+        </div>
+    </section>

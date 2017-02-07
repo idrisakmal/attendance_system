@@ -1,0 +1,46 @@
+ <%= link_to("Add New Section",{:controller=>'lecturer',:action=>'new_section'}) %>
+ 
+
+    
+    <br/><br/>
+
+    <section class="panel">
+        <header class="panel-heading">
+            My Sections
+        </header>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Section Name</th>
+                        <th>Lecturer Name</th>
+                        <th>Actions </th>
+                        <th>Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% @sections.each do |section| %>
+                
+                    <tr>
+                        <td><%= section.name %></td>
+                        <td><%= section.lecturer.first_name %>  <%= section.lecturer.last_name %></td>
+                        
+                        <td>
+                       
+                            &nbsp <%= link_to("Edit",{:controller=>'lecturer',:action=>'edit_section',:id=>section.id}) %>
+                            &nbsp <%= link_to("Delete",{:controller=>'lecturer',:action=>'destroy_section',:id=>section.id},:onclick=> 'return confirm("Are you sure to delete this record?")' ) %>
+                        </td>
+
+                        <td> 
+                            <a href="/lecturer/section_students/<%= section.id %> ">  Show Students </a> 
+                        </td>
+
+                    </tr>
+
+                <% end %>
+
+                </tbody>
+            </table>
+        </div>
+    </section>

@@ -1,0 +1,51 @@
+ 
+    <section class="panel">
+        <header class="panel-heading">
+            Students
+        </header>
+        <div class="panel-body table-responsive">
+            
+        	<%= form_for(:attendance,:url=>{:action=>'create_attendance'}) do |f| %>
+               
+	            <table class="table table-hover">
+	                <thead>
+	                    <tr>
+	                    	<th>Student Roll </th>
+	                        <th>Student Name</th>
+	                        <th>Status (Present / Absent)</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+
+	                <% @students.each do |student| %>
+	                
+	                    <tr>
+	                    	<td><%= student.id %></td>
+	                        <td><%= student.first_name %> <%= student.last_name %></td>
+	                        
+	                        <td>
+	                        	<label><%= check_box_tag "[attendance][][status]", 'Present' %> Present </label>
+	                        	&nbsp &nbsp <label><%= check_box_tag "[attendance][][status]", 'Absent' %> Absent </label>
+	                        </td>
+
+	                        <!-- <td><label><%= f.check_box :status %>&nbsp Present </label>
+	                        &nbsp <label><%= f.check_box :status %>&nbsp Absent </label>
+	                       </td> -->
+
+	                       <%= hidden_field_tag "[attendance][][student_id]", student.id %>
+	                       <%= hidden_field_tag "[attendance][][section_id]", @section.id %>
+	                       <%= hidden_field_tag "[attendance][][day]", Time.now.strftime("%A") %>
+	                       <%= hidden_field_tag "[attendance][][date]", Date.today.to_s %>
+	                    </tr>
+
+	                <% end %>
+
+	                </tbody>
+	            </table>
+
+             	<%= f.submit "Save", class: 'button' %>
+            
+            <% end %>
+
+        </div>
+    </section>

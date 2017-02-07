@@ -1,0 +1,41 @@
+ <%= link_to("Add New Student",{:controller=>'lecturer',:action=>'new_student'}) %>
+ 
+
+    
+    <br/><br/>
+
+    <section class="panel">
+        <header class="panel-heading">
+            Students
+        </header>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Contact No</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% @students.each do |student| %>
+                
+                    <tr>
+                        <td><%= student.first_name %></td>
+                        <td><%= student.last_name %></td>
+                        <td><%= student.username %></td>
+                        <td><%= student.contact_no %></td>
+                        <td><%= link_to("Edit",{:controller=>'lecturer',:action=>'edit_student',:id=>student.id}) %> | <%= link_to("Delete",{:controller=>'lecturer',:action=>'delete_student',:id=>student.id},:onclick=> 'return confirm("Are you sure to delete this record?")') %> </td>
+                       
+
+                    </tr>
+
+                <% end %>
+
+                </tbody>
+            </table>
+        </div>
+    </section>

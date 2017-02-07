@@ -1,0 +1,40 @@
+
+
+    <%= link_to("Add New Lecturer",{:controller=>'superadmin',:action=>'dashboard'}) %>
+    
+    <br/><br/>
+
+    <section class="panel">
+        <header class="panel-heading">
+            Lecturers
+        </header>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Contact No</th> 
+                        <th>Actions</th>            
+                    </tr>
+                </thead>
+                <tbody>
+
+                <% @lecturers.each do |lecturer| %>
+                
+                    <tr>
+                        <td><%= lecturer.first_name %></td>
+                        <td><%= lecturer.last_name %></td>
+                        <td><%= lecturer.username %></td>
+                        <td><%= lecturer.contact_no %></td>
+                        <td><%= link_to("Edit",{:controller=>'superadmin',:action=>'edit_lecturer',:id=>lecturer.id}) %> | <%= link_to("Delete",{:controller=>'superadmin',:action=>'delete_lecturer',:id=>lecturer.id},:onclick=> 'return confirm("Are you sure to delete this record?")') %> </td>
+
+                    </tr>
+                <% end %>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+

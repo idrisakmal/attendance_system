@@ -1,0 +1,19 @@
+<section class="panel">
+        <header class="panel-heading">
+                Attendance Sheets
+        </header>
+        <div class="panel-body table-responsive">
+            <%= form_for(:section,:url=>{:action=>'search_attendance_sheets'}) do |f| %>
+               
+
+                <div class="form-group">
+                    <label>Select Section</label> 
+                    <%= f.collection_select(:id, @lecturer.sections, :id, :name ) %>
+                    
+                </div>
+
+                
+                <%= f.submit "Save", class: 'button' %>
+            <% end %>
+        </div>
+</section>
